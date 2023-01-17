@@ -1,0 +1,47 @@
+<%- include ('./partials/header.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+    <div>
+        <h1>Consulta: <%= appo.description %> </h1>
+        <hr>
+        <h4>Paciente: <%= appo.name %> </h4>
+        <h4>Email: <%= appo.email %></h4>
+        <h4>CPF: <%= appo.cpf %></h4>
+        <hr>
+        <% if(!appo.finished) { %>
+            <form action="/finish" method="POST">         
+                <input type="hidden" name="id" value="<%= appo._id %>">       
+                <button class="btn btn-primary btn-square">Finalizar consulta</button>
+            </form>
+        <% } else { %>
+        
+            <div class="alert alert-success" role="alert">
+                Consulta finalizada
+              </div>
+
+        <% } %>  
+        
+    </div>   
+</body>
+<style>
+    div {
+        background-color: #fff;
+        border: 1px solid #a8a8a8;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        padding: 150px;
+        box-shadow: 3px 3px 50px #6e6e6e;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    body {
+        background-color: rgb(240, 240, 240);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+</style>
+</html>

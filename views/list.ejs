@@ -1,0 +1,31 @@
+<%- include ('./partials/header.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+    <h1 class="display-3">Consultas: </h1>
+    <hr>
+    <form action="/searchresult" method="get">
+        <input class="form-control" type="search" name="search" id="search" placeholder="Digite o email ou o CPF"><br>
+        <button class="btn btn-primary">Pesquisar</button>        
+    </form><br>
+    <% appos.forEach(appo => { %>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Consulta: <%= appo.description %> </h5>
+              <h6 class="card-subtitle mb-2 text-muted">Paciente: <%= appo.name %> </h6>
+              <p class="card-text">Email: <%= appo.email %></p>
+              <p class="card-text">CPF: <%= appo.cpf %></p>              
+            </div>
+        </div><hr>
+    <% }) %>
+</body>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 18rem;
+    }
+    h1, .card, form {
+        margin-left: 15px
+    }
+</style>
+</html>
